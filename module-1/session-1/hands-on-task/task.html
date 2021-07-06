@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Hand on Task</title>
+</head>
+<body>
+	<p id="hasil"></p>
+	<button onclick="averageAge()">Calculate Average</button>
+<script>
+	// Declare students array of objects
+	const students = [
+		{name : "Alice", age: 20},
+		{name : "Bob", age: 21},
+		{name : "Jane", age: 20},
+	];
+	// Create element called 'tabel'
+	let tabel = document.createElement('table');
+	tabel.setAttribute('border',1);
+	// Insert students value to tabel
+	students.forEach(student => {
+		let baris = document.createElement("tr");
+		let kolomNama = document.createElement("td");
+		kolomNama.innerText = student.name;
+		let kolomUmur = document.createElement("td");
+		kolomUmur.innerText = student.age;
+		baris.appendChild(kolomNama);
+		baris.appendChild(kolomUmur);
+		tabel.appendChild(baris);
+	});
+	// Add table to body
+	document.body.insertBefore(tabel, hasil);
+	// Calculate average of students age
+	const averageAge = () => {
+		// Get total students age
+		let total = students.reduce((acc,{age}) => {
+			return acc + age;
+		}, 0);
+		// Get average students by dividing with students length
+		let avg = total / students.length;
+		// Get element with id 'hasil'
+		let hasil = document.getElementById('hasil');
+		// Add text to element with id 'hasil'
+		hasil.innerText = `Hasil rata-rata umur : ${avg}`;
+	}
+
+</script>	
+</body>
+</html>
