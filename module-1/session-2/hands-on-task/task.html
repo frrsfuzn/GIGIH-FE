@@ -8,7 +8,7 @@
   </head>
   <body>
     <p id="hasil"></p>
-    <button onclick="asyncAwait()">Calculate Average</button>
+    <button onclick="startCalculation()">Calculate Average</button>
     <script>
       // Declare students array of objects
       const students = [
@@ -43,23 +43,24 @@
         // Get element with id 'hasil'
         let hasil = document.getElementById("hasil");
         // Add text to element with id 'hasil'
-        hasil.innerText += `age is ${avg}`;
+        hasil.innerText += `age is ${avg}\n`;
       };
 
       const wait = (time) =>
         new Promise((resolve) => setTimeout(resolve, time));
-
-      async function asyncAwait() {
-        let hasil = document.getElementById("hasil");
-        hasil.innerText += "calculation start\n";
-        hasil.innerText += "second call started\n";
-        await wait(2000);
-        hasil.innerText += "second call finished\n";
-        hasil.innerText += "third call started\n";
-        await wait(3000);
-        hasil.innerText += "third call finished\n";
-        averageAge();
-      }
+			
+			function startCalculation(){
+				let hasil = document.getElementById('hasil');
+				hasil.innerText += 'calculation start\n';
+				wait(5000).then(() => averageAge());
+				hasil.innerText += 'second call started\n';
+				wait(2000).then(() => {
+					hasil.innerText += 'second call finished\n';
+					hasil.innerText += 'third call started\n';
+					wait(5000).then(() => hasil.innerText += 'third call finished\n');
+				});
+				
+			}
     </script>
   </body>
 </html>

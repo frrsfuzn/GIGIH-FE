@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Create Playlist</title>
+	<link rel="stylesheet" href="src/style.css">
+</head>
+<body>
+	<h1>Create Playlist</h1>	
+	<form action="">
+		<label>Song's title</label>
+		<input type="text">
+		<p>Song's description</p>
+		<textarea ></textarea>
+		<br>
+		<button onclick="fungsi()">Submit</button>
+	</form>
+	<div class="playlist">
+		<img id="image" width="360" src="src/img/adhitia.jpg" alt="">	
+		<p>Title: <span id="title"></span></p>
+		<p>Artists: <span id="artists"></span></p>
+		<p>Albums: <span id="album"></span></p>
+		<a target="_blank" id='spotifyBtn' class='btn'>Open on Spotify</a>
+	</div>
+	<script src="src/script.js"></script>
+</body>
+</html>
